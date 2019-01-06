@@ -1,13 +1,18 @@
 const express = require("express")
 const router = express.Router();
+const db = require("../models")
 
-router.use(function(req, res, next)  {
-    console.log("who the Fuck are you")
-    next();
-});
+
 
 router.get("/", (req, res) => {
-    res.send("Hello From TODOS routes")
+    db.Todo.find()
+        .then(todos => {res.json(todos)})
+        .catch(err => {re.send(err)})
+});
+
+
+router.post("/",(req,res) => {
+    res.send("This is the post route")
 });
 
 module.exports = router;
