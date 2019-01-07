@@ -1,8 +1,13 @@
 const express = require('express')
 const app = express()
 const port  = 3000;
+const bodyParser = require('body-parser')
 
 const todoRoutes = require("./routes/todos")
+
+//Allow us to access the request body
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
 
 //Middleware function
 app.use("/",(req, res, next) =>  {
