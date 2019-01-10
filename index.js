@@ -14,9 +14,13 @@ app.use("/",(req, res, next) =>  {
     console.log("who the Fuck are you")
     next();
 });
-      
+
+app.use(express.static(__dirname + '/public'));
+
+app.use(express.static(__dirname + '/views'))
 app.get("/", (req, res) => 
-    res.json("Hello from express") //Makes sure it responds with JSON
+    // res.sendFile("index.html") //Makes sure it responds with JSON
+    {res.sendFile("index.html")}
     )
 
 app.use("/api/todos", todoRoutes)

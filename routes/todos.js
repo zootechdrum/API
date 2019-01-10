@@ -4,7 +4,7 @@ const db = require("../models");
 const helpers = require("../helpers/todos");
 
 
-
+(helpers.getTodos)
 router.route("/")
     .get(helpers.getTodos)
     .post(helpers.createTodo)
