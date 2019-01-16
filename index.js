@@ -17,7 +17,7 @@ app.use("/",(req, res, next) =>  {
 
 app.use(express.static(__dirname + '/public'));
 
-app.use(express.static(__dirname + '/views'))
+app.use(express.static(__dirname + '/views'));
 app.get("/", (req, res) => 
     // res.sendFile("index.html") //Makes sure it responds with JSON
     {res.sendFile("index.html")}
