@@ -1,8 +1,11 @@
 $(document).ready(function(){
     $.getJSON("/api/todos")
-    .then(function(data){
-        console.log(data)
-    })
+    .then(addTodos)
 });
 
-console.log($)
+function addTodos(todos) {
+    todos.forEach(function(todo){
+      let newTodo = $('<li class="task">' + todo.name + '</li>');
+      $('.list').append(newTodo);
+    })
+}
