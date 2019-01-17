@@ -2,7 +2,7 @@ $(document).ready(function(){
     $.getJSON("/api/todos")
     .then(addTodos)
 
-    ('#todoInput').keypress(function(event){
+    $('#todoInput').keypress(function(event){
       if(event.which === 13) {
         createTodo();
       } 
@@ -21,13 +21,15 @@ function addTodo(todo){
   if(todo.completed){
     newTodo.addClass("done");
   }
+  $('.list').append(newTodo);
 }
-$('.list').append(newTodo);
+
 function createTodo(){
   //send request to create new todo
   let userInput = $('#todoInput').val();
   $.post('/api/todos',{name:userInput})
   .then(function(newTodo){
-    console.log(newTodo)
+    $('#todoInput').val("");
+    addTodo(newTodo);
   })
 }
